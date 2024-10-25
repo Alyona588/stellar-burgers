@@ -8,7 +8,6 @@ const middleware: Middleware =
     if (createOrder.fulfilled.match(action)) {
       store.dispatch(resetConstructor());
     }
-
     next(action);
   };
 

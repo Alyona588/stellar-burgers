@@ -6,14 +6,18 @@ import { loginUser } from '../../services/slices/user';
 
 export const Login: FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const { from } = location.state || { from: { pathname: '/' } };
   const { loginError } = useSelector((state) => state.user);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    dispatch(loginUser({ email, password }));
+    await dispatch(loginUser({ email, password }));
+    navigate(from.pathname, { replace: true });
   };
 
   return (

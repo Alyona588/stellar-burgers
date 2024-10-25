@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../services/slices/user';
 
 export const Register: FC = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { registerError } = useSelector((state) => state.user);
 
@@ -15,7 +14,7 @@ export const Register: FC = () => {
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    dispatch(registerUser({ name: userName, email, password }));
+    await dispatch(registerUser({ name: userName, email, password }));
   };
 
   return (

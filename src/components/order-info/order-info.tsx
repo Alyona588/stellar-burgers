@@ -11,7 +11,6 @@ export const OrderInfo: FC = () => {
   const dispatch = useDispatch();
   const { number } = useParams();
   const ingredients = useSelector((state) => state.ingredients.data);
-  const isIngredientsLoading = useSelector((state) => state.ingredients);
 
   const { isOrderLoading, orderModalData: orderData } = useSelector(
     (state) => state.orders
@@ -44,7 +43,6 @@ export const OrderInfo: FC = () => {
         } else {
           acc[item].count++;
         }
-
         return acc;
       },
       {}
@@ -63,7 +61,7 @@ export const OrderInfo: FC = () => {
     };
   }, [orderData, ingredients]);
 
-  if (isOrderLoading || isIngredientsLoading) {
+  if (isOrderLoading) {
     return <Preloader />;
   }
 

@@ -27,6 +27,10 @@ const App = () => {
   const navigate = useNavigate();
   const backgroundLocation = location.state?.background;
 
+  useEffect(() => {
+    localStorage.setItem('currentPath', location.pathname);
+  }, [location]);
+
   const handleModalClose = () => {
     dispatch(resetOrderModalData());
     navigate(-1);

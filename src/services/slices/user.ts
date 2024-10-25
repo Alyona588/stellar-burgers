@@ -32,7 +32,7 @@ export const registerUser = createAsyncThunk<TUser, TRegisterData>(
   async (data) => {
     const response = await registerUserApi(data);
     const { user, accessToken, refreshToken } = response;
-    takeTokensToStore(refreshToken, accessToken);
+    takeTokensToStore(accessToken, refreshToken);
     return user;
   }
 );
@@ -42,7 +42,7 @@ export const loginUser = createAsyncThunk<TUser, TLoginData>(
   async (data) => {
     const response = await loginUserApi(data);
     const { user, accessToken, refreshToken } = response;
-    takeTokensToStore(refreshToken, accessToken);
+    takeTokensToStore(accessToken, refreshToken);
     return user;
   }
 );
