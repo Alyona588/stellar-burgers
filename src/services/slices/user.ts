@@ -12,7 +12,7 @@ import {
   logoutApi,
   registerUserApi,
   updateUserApi
-} from '@api';
+} from '../../utils/burger-api';
 
 import { TUser, TUserState } from '@utils-types';
 import { clearTokens, takeTokensToStore } from '../../utils/cookie';

@@ -1,10 +1,5 @@
-import { getFeedsApi } from '@api';
-import {
-  PayloadAction,
-  SerializedError,
-  createAsyncThunk,
-  createSlice
-} from '@reduxjs/toolkit';
+import { getFeedsApi } from '../../utils/burger-api';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TFeedsState, TOrdersData } from '@utils-types';
 
 export const getFeeds = createAsyncThunk<TOrdersData>(
