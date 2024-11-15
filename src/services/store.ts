@@ -1,15 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
-
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   TypedUseSelectorHook,
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
-
-const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
+import ordersMiddleware from '../services/middleware/orderMiddleware';
+import { rootReducer } from './slices/root';
 
 const store = configureStore({
   reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(ordersMiddleware),
   devTools: process.env.NODE_ENV !== 'production'
 });
 
